@@ -1,0 +1,17 @@
+import os
+import time
+
+
+def show_file_info(directory):
+    for root, dirs, files in os.walk(directory):
+        for file in files:
+            filepath = os.path.join(root, file)
+            filetime = time.ctime(os.path.getmtime(filepath))
+            filesize = os.path.getsize(filepath)
+            parent_dir = os.path.dirname(filepath)
+            print(
+                f'Обнаружен файл: {file}, Путь: {filepath}, Размер: {filesize} байт, Время изменения: {filetime}, Родительская директория: {parent_dir}')
+
+
+directory = 'E:/PythonProject_Urban/homework2/Module 7'
+show_file_info(directory)
